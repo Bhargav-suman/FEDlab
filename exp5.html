@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const products = [
+            {name:'product1',price:20,category:'Electronics'},
+            {name:'product2',price:30,category:'clothes'},
+            {name:'product3',price:40,category:'Electronics'},
+            {name:'product4',price:50,category:'clothes'},
+            {name:'product5',price:60,category:'clothes'},
+            {name:'product6',price:70,category:'Electronics'},
+            {name:'product7',price:80,category:'clothes'},
+            {name:'product8',price:90,category:'Electronics'}
+        ]
+
+        /* use map to create a dictionary with category as the key and an array of products as the value */
+
+        const productsByCategory = products.reduce((acc,product)=>{
+            const category = product.category;
+            if(!acc[category]){acc[category]=[];}
+            acc[category].push(product);
+            //console.log(acc);
+            return acc;
+            
+        },{});
+
+        //use a map to calculate the average price for each category
+
+        const avgPriceByCategory = Object.keys(productsByCategory).map(category=>{
+            const sum = productsByCategory[category].reduce((acc,product)=>acc+product.price,0);
+            return{
+                category:category,average:sum/productsByCategory[category].length
+            }
+        });
+
+        /* use filters to select categories with an average above a certain threshold */
+
+        const highPricedCategories = avgPriceByCategory.filter(category=>category.average>50);
+        console.log(highPricedCategories);
+
+    </script>
+</body>
+</html>
