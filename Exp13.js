@@ -1,5 +1,5 @@
 /*
-//using fetch
+//Datafetching using fetch
 import React, { useState,useEffect } from 'react'
 export const Exp13=()=>{
     const [data,setData] = useState([])
@@ -31,7 +31,7 @@ export const Exp13=()=>{
 export default Exp13;*/
 
 
-//using Axios
+//Datafetching using Axios
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 export default function Exp13(){
